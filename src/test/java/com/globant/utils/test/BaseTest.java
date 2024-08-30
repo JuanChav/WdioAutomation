@@ -1,5 +1,6 @@
 package com.globant.utils.test;
 
+import com.globant.Screens.HomeScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.testng.annotations.BeforeMethod;
@@ -45,6 +46,10 @@ public class BaseTest {
 
     public static String getCapability(String capability){
         return properties.getProperty(capability);
+    }
+
+    public HomeScreen returnHomeScreen() {
+        return new HomeScreen(driver);
     }
 
 }
