@@ -5,8 +5,6 @@ import com.globant.utils.test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.util.List;
-
 public class WdioTest extends BaseTest {
     SoftAssert softAssert = new SoftAssert();
 
@@ -36,6 +34,31 @@ public class WdioTest extends BaseTest {
 
         dragScreen = swipeScreen.tapDragBtn();
         softAssert.assertTrue(dragScreen.isMainTextDragTxtDisplayed());
+    }
+
+    @Test
+    public void verifySuccesfullSignUp(){
+        homeScreen = returnHomeScreen();
+
+        loginScreen = homeScreen.tapLoginBtn();
+        loginScreen.tapSignUpBtn();
+        loginScreen.inputRandomSingUpEmail();
+        loginScreen.inputRandomSingUpPassword();
+        loginScreen.tapSignUpSubmitBtn();
+
+        softAssert.assertEquals(loginScreen.getSingUpPopupText(), "You successfully signed up!");
+    }
+
+    @Test(dependsOnMethods = "verifySuccesfullSignUp")
+    public void verifySuccesfullLogin(){
+        homeScreen = returnHomeScreen();
+
+        loginScreen = homeScreen.tapLoginBtn();
+        loginScreen.inputLoginEmail();
+        loginScreen.inputLoginPassword();
+        loginScreen.tapLoginSubmitBtn();
+
+        softAssert.assertEquals(loginScreen.getLoginPopupText(), "You are logged in!");
     }
 
 }
