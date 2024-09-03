@@ -41,6 +41,8 @@ public class WdioTest extends BaseTest {
         homeScreen = returnHomeScreen();
 
         loginScreen = homeScreen.tapLoginBtn();
+        softAssert.assertTrue(loginScreen.isMainTextLoginTxtDisplayed());
+
         loginScreen.tapSignUpBtn();
         loginScreen.inputRandomSingUpEmail();
         loginScreen.inputRandomSingUpPassword();
@@ -54,11 +56,30 @@ public class WdioTest extends BaseTest {
         homeScreen = returnHomeScreen();
 
         loginScreen = homeScreen.tapLoginBtn();
+        softAssert.assertTrue(loginScreen.isMainTextLoginTxtDisplayed());
+
         loginScreen.inputLoginEmail();
         loginScreen.inputLoginPassword();
         loginScreen.tapLoginSubmitBtn();
 
         softAssert.assertEquals(loginScreen.getLoginPopupText(), "You are logged in!");
+    }
+
+    @Test
+    public void verifySwipeCardsOnTheSwipeSection() throws InterruptedException {
+        homeScreen = returnHomeScreen();
+
+        swipeScreen = homeScreen.tapSwipeBtn();
+        softAssert.assertTrue(swipeScreen.isMainTextSwipeTxtDisplayed());
+
+        swipeScreen.performFirstElementSwipeGesture();
+        softAssert.assertFalse(swipeScreen.isCarouselItem0Displayed());
+
+        swipeScreen.performAllElementsSwipeGesture();
+        softAssert.assertFalse(swipeScreen.isCarouselItem5Displayed());
+
+        softAssert.assertEquals(swipeScreen.getFoundMeTxtTest(), "You found me!!!");
+
     }
 
 }

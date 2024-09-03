@@ -9,6 +9,7 @@ public class HomeScreen extends BaseScreen {
     private static final String DEMO_APP_FOR_APPIUM_TXT = "UiSelector().textContains(\"Demo app for the appium-boilerplate\")";
     private static final String WEBVIEW_BTN = "UiSelector().description(\"Webview\")";
     private static final String LOGIN_BTN = "UiSelector().description(\"Login\")";
+    private static final String SWIPE_BTN = "UiSelector().description(\"Swipe\")";
 
     @AndroidFindBy(uiAutomator = DEMO_APP_FOR_APPIUM_TXT)
     private WebElement demoAppForAppiumTxt;
@@ -16,6 +17,8 @@ public class HomeScreen extends BaseScreen {
     private WebElement webviewBtn;
     @AndroidFindBy(uiAutomator = LOGIN_BTN)
     private WebElement loginBtn;
+    @AndroidFindBy(uiAutomator = SWIPE_BTN)
+    private WebElement swipeBtn;
 
     public boolean isDemoAppForAppiumTxtDisplayed() {
         return isElementDisplayed(demoAppForAppiumTxt);
@@ -29,6 +32,11 @@ public class HomeScreen extends BaseScreen {
     public LoginScreen tapLoginBtn() {
         loginBtn.click();
         return new LoginScreen(driver);
+    }
+
+    public SwipeScreen tapSwipeBtn() {
+        swipeBtn.click();
+        return new SwipeScreen(driver);
     }
 
     public HomeScreen(AndroidDriver driver) {
