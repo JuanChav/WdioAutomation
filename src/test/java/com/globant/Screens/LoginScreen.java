@@ -8,32 +8,29 @@ import org.openqa.selenium.WebElement;
 import java.util.Random;
 
 public class LoginScreen extends BaseScreen {
-    private static final String MAIN_TEXT_LOGIN_TXT = "UiSelector().text(\"Login / Sign up Form\")";
     private static final String FORMS_BTN = "UiSelector().description(\"Forms\")";
 
-    private static final String SING_UP_BTN = "UiSelector().description(\"button-sign-up-container\")";
+    private static final String SING_UP_BTN = "//android.widget.TextView[@text=\"Sign up\"]";
     private static final String SING_UP_EMAIL_INPUT = "UiSelector().text(\"Email\")";
-    private static final String SING_UP_PASSWORD_INPUT = "UiSelector().text(\"Password\")";
+    private static final String SING_UP_PASSWORD_INPUT = "input-password";
     private static final String SING_UP_CONFIRM_PASSWORD_INPUT = "UiSelector().text(\"Confirm password\")";
     private static final String SING_UP_SUBMIT_BTN = "UiSelector().description(\"button-SIGN UP\")";
     private static final String SING_UP_POPUP = "UiSelector().resourceId(\"android:id/message\")";
 
     private static final String LOGIN_BTN = "UiSelector().description(\"button-login-container\")";
-    private static final String LOGIN_EMAIL_INPUT = "UiSelector().text(\"Email\")";
-    private static final String LOGIN_PASSWORD_INPUT = "UiSelector().text(\"Password\")";
+    private static final String LOGIN_EMAIL_INPUT = "input-email";
+    private static final String LOGIN_PASSWORD_INPUT = "//android.widget.EditText[@content-desc=\"input-password\"]";
     private static final String LOGIN_SUBMIT_BTN = "UiSelector().description(\"button-LOGIN\")";
     private static final String LOGIN_POPUP = "UiSelector().resourceId(\"android:id/message\")";
 
-    @AndroidFindBy(uiAutomator = MAIN_TEXT_LOGIN_TXT)
-    private WebElement mainTextLoginTxt;
     @AndroidFindBy(uiAutomator = FORMS_BTN)
     private WebElement formsBtn;
 
-    @AndroidFindBy(uiAutomator = SING_UP_BTN)
+    @AndroidFindBy(xpath = SING_UP_BTN)
     private WebElement singUpBtn;
     @AndroidFindBy(uiAutomator = SING_UP_EMAIL_INPUT)
     private WebElement singUpEmailInput;
-    @AndroidFindBy(uiAutomator = SING_UP_PASSWORD_INPUT)
+    @AndroidFindBy(accessibility = SING_UP_PASSWORD_INPUT)
     private WebElement signUpPasswordInput;
     @AndroidFindBy(uiAutomator = SING_UP_CONFIRM_PASSWORD_INPUT)
     private WebElement signUpConfirmPasswordInput;
@@ -44,20 +41,21 @@ public class LoginScreen extends BaseScreen {
 
     @AndroidFindBy(uiAutomator = LOGIN_BTN)
     private WebElement loginBtn;
-    @AndroidFindBy(uiAutomator = LOGIN_EMAIL_INPUT)
+    @AndroidFindBy(accessibility = LOGIN_EMAIL_INPUT)
     private WebElement loginEmailInput;
-    @AndroidFindBy(uiAutomator = LOGIN_PASSWORD_INPUT)
+    @AndroidFindBy(xpath = LOGIN_PASSWORD_INPUT)
     private WebElement loginPasswordInput;
     @AndroidFindBy(uiAutomator = LOGIN_SUBMIT_BTN)
     private WebElement loginSubmitBtn;
     @AndroidFindBy(uiAutomator = LOGIN_POPUP)
     private WebElement loginPopUp;
 
-    private String randomEmail = generateRandomEmail();
-    private String randomPassword = generateRandomPassword();
+    private final String randomEmail = generateRandomEmail();
+    private final String randomPassword = generateRandomPassword();
 
-    public boolean isMainTextLoginTxtDisplayed() {
-        return isElementDisplayed(mainTextLoginTxt);
+    public String isLoginSubmitBtnClickable() {
+        waitToBeClickable(loginSubmitBtn);
+        return loginSubmitBtn.getAttribute("clickable");
     }
 
     public FormsScreen tapFormsBtn() {

@@ -21,10 +21,10 @@ public class WdioTest extends BaseTest {
         softAssert.assertTrue(homeScreen.isDemoAppForAppiumTxtDisplayed());
 
         webviewScreen = homeScreen.tapWebviewBtn();
-        softAssert.assertTrue(webviewScreen.isMainTextWebviewTxtDisplayed());
+        softAssert.assertEquals("true", webviewScreen.isMainImageWebviewEnabled());
 
         loginScreen = webviewScreen.tapLoginBtn();
-        softAssert.assertTrue(loginScreen.isMainTextLoginTxtDisplayed());
+        softAssert.assertEquals("true", loginScreen.isLoginSubmitBtnClickable());
 
         formsScreen = loginScreen.tapFormsBtn();
         softAssert.assertTrue(formsScreen.isMainTextFormsTxtDisplayed());
@@ -41,7 +41,7 @@ public class WdioTest extends BaseTest {
         homeScreen = returnHomeScreen();
 
         loginScreen = homeScreen.tapLoginBtn();
-        softAssert.assertTrue(loginScreen.isMainTextLoginTxtDisplayed());
+        softAssert.assertEquals("true", loginScreen.isLoginSubmitBtnClickable());
 
         loginScreen.tapSignUpBtn();
         loginScreen.inputRandomSingUpEmail();
@@ -56,7 +56,7 @@ public class WdioTest extends BaseTest {
         homeScreen = returnHomeScreen();
 
         loginScreen = homeScreen.tapLoginBtn();
-        softAssert.assertTrue(loginScreen.isMainTextLoginTxtDisplayed());
+        softAssert.assertEquals("true", loginScreen.isLoginSubmitBtnClickable());
 
         loginScreen.inputLoginEmail();
         loginScreen.inputLoginPassword();

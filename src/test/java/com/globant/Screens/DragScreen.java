@@ -6,9 +6,9 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 
 public class DragScreen extends BaseScreen {
-    private static final String MAIN_TEXT_DRAG_TXT = "UiSelector().text(\"Drag and Drop\")";
+    private static final String MAIN_TEXT_DRAG_TXT = "//android.widget.TextView[@text=\"Drag and Drop\"]\n";
 
-    @AndroidFindBy(uiAutomator = MAIN_TEXT_DRAG_TXT)
+    @AndroidFindBy(xpath = MAIN_TEXT_DRAG_TXT)
     private WebElement mainTextDragTxt;
 
     public boolean isMainTextDragTxtDisplayed() {
