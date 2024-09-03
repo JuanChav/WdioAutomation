@@ -5,7 +5,6 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -21,8 +20,7 @@ public class SwipeScreen extends BaseScreen {
     private static final String CAROUSEL_ITEM_3 = "UiSelector().resourceId(\"__CAROUSEL_ITEM_3_READY__\")";
     private static final String CAROUSEL_ITEM_4 = "UiSelector().resourceId(\"__CAROUSEL_ITEM_4_READY__\")";
     private static final String CAROUSEL_ITEM_5 = "UiSelector().resourceId(\"__CAROUSEL_ITEM_5_READY__\")";
-    private static final String FOUND_ME_TXT = "UiSelector().text(\"You found me!!!\")";
-    private static final String FOUND_ME_TXT_TEST = "new UiScrollable(new UiSelector()).scrollIntoView(text(\"You found me!!!\"));";
+    private static final String FOUND_ME_TXT = "new UiScrollable(new UiSelector()).scrollIntoView(text(\"You found me!!!\"));";
 
     @AndroidFindBy(uiAutomator = MAIN_TEXT_SWIPE_TXT)
     private WebElement mainTextSwipeTxt;
@@ -42,12 +40,6 @@ public class SwipeScreen extends BaseScreen {
     private WebElement carouselItem4;
     @AndroidFindBy(uiAutomator = CAROUSEL_ITEM_5)
     private WebElement carouselItem5;
-    @AndroidFindBy(uiAutomator = FOUND_ME_TXT)
-    private WebElement foundMeTxt;
-
-    public enum ScrollDirection {
-        DOWN, RIGHT
-    }
 
     public boolean isMainTextSwipeTxtDisplayed() {
         return isElementDisplayed(mainTextSwipeTxt);
@@ -103,20 +95,8 @@ public class SwipeScreen extends BaseScreen {
         }
     }
 
-    public void scrollDownToBottom() {
-        Dimension size = driver.manage().window().getSize();
-        int startY = (int) (size.height * 0.8);
-        int endY = (int) (size.height * 0.2);
-    }
-
     public String getFoundMeTxtTest() {
-        return driver.findElement(AppiumBy.androidUIAutomator(FOUND_ME_TXT_TEST)).getText();
-    }
-
-
-    public String getFoundMeTxt() {
-        waitElementVisibility(foundMeTxt);
-        return foundMeTxt.getText();
+        return driver.findElement(AppiumBy.androidUIAutomator(FOUND_ME_TXT)).getText();
     }
 
     public SwipeScreen(AndroidDriver driver) {

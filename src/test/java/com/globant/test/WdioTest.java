@@ -66,7 +66,7 @@ public class WdioTest extends BaseTest {
     }
 
     @Test
-    public void verifySwipeCardsOnTheSwipeSection() throws InterruptedException {
+    public void verifySwipeCardsOnTheSwipeSection() {
         homeScreen = returnHomeScreen();
 
         swipeScreen = homeScreen.tapSwipeBtn();
