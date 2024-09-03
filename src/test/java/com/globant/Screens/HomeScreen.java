@@ -18,7 +18,7 @@ public class HomeScreen extends BaseScreen {
     private WebElement loginBtn;
 
     public boolean isDemoAppForAppiumTxtDisplayed() {
-        return demoAppForAppiumTxt.isDisplayed();
+        return isElementDisplayed(demoAppForAppiumTxt);
     }
 
     public WebviewScreen tapWebviewBtn() {

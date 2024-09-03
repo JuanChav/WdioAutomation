@@ -6,7 +6,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
 
 public class WebviewScreen extends BaseScreen {
-    private static final String MAIN_TEXT_WEBVIEW_TXT = "UiSelector().text(\"Next-gen browser and mobile automation test framework for Node.js\")";
+    private static final String MAIN_TEXT_WEBVIEW_TXT = "UiSelector().text(\"WebdriverIO\")";
     private static final String LOGIN_BTN = "UiSelector().description(\"Login\")";
 
     @AndroidFindBy(uiAutomator = MAIN_TEXT_WEBVIEW_TXT)
